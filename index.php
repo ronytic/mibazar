@@ -3,15 +3,15 @@
 $c = $_GET['c'];
 $m = $_GET['m'];
 // 2.- Verificarsi estan definidos
-echo "Controlador: $c <br>";
-echo "Método: $m <br>";
+// echo "Controlador: $c <br>";
+// echo "Método: $m <br>";
 
 // 3.- Uniformar los datos
 
 $c = ucfirst(strtolower($c)); // Convierte la primera letra en mayúscula
 
-echo "Controlador: $c <br>";
-echo "Método: $m <br>";
+// echo "Controlador: $c <br>";
+// echo "Método: $m <br>";
 
 
 // metodo para incluir a los archivos cuando tienen namespace dinamicos

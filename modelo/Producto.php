@@ -1,5 +1,7 @@
 <?php
 
+namespace modelo;
+
 class Producto
 {
     //Insertar
