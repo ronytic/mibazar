@@ -1,4 +1,6 @@
 <?php
+
+date_default_timezone_set('America/La_Paz');
 // 1.- Recibir los valores enviados
 $c = $_GET['c'];
 $m = $_GET['m'];
