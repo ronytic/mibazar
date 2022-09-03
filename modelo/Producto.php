@@ -2,8 +2,10 @@
 
 namespace modelo;
 
-class Producto
+class Producto extends BD
 {
+    protected $nombreTabla = 'productos';
+
     //Insertar
     //Update
     //Delete

@@ -53,6 +53,27 @@ class Producto
         } else {
             echo "No es un archivo imagen";
         }
+
+
+        //// EMPEZAR A LLAMAR AL MODELO
+
+        // 4.- Llamar al modelo
+        $producto = new \modelo\Producto();
+
+        $valores = [
+            'nombre' => $nombre,
+            'precio' => $precio,
+            'foto' => $archivoDestino,
+            'descripcion' => $descripcion,
+        ];
+
+        $respuesta = $producto->insertar($valores);
+
+        if ($respuesta) {
+            echo "Producto guardado";
+        } else {
+            echo "Error al guardar el producto";
+        }
     }
 
     function editar()
