@@ -2,10 +2,7 @@
 
 namespace modelo;
 
-class Venta
+class Venta extends BD
 {
-    //Insertar
-    //Update
-    //Delete
-    //Select
+    protected $nombreTabla = 'venta';
 }
