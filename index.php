@@ -1,2 +1,3 @@
 <?php
-echo "HOLA";
+$array = [];
+print_r($array);
