@@ -63,8 +63,57 @@ class BD
     {
         // 1.- Conectar a la BD
     }
-    function seleccionar()
+    function seleccionar($campos = '*', $condiciones = '', $camposGroupBy = '', $whereHaving = '', $ordenamiento = '', $limites = '')
     {
-        // 1.- Conectar a la BD
+
+        /*
+            SELECT $campos
+            FROM $nombretabla
+            [WHERE $condiciones]
+            [GROUP BY $camposGroupBy
+            [HAVING $whereHaving]
+            [ORDER BY $ordenamiento
+            [LIMIT $limites]
+            */
+        if ($condiciones != "") { // si hay condiciones
+            $condiciones = "WHERE $condiciones";
+        }
+        if ($camposGroupBy != "") { // si hay campos para agrupar
+            $camposGroupBy = "GROUP BY $camposGroupBy";
+        }
+        if ($whereHaving != "") { // si hay condiciones para agrupar
+            $whereHaving = "HAVING $whereHaving";
+        }
+        if ($ordenamiento != "") { // si hay ordenamiento
+            $ordenamiento = "ORDER BY $ordenamiento";
+        }
+        if ($limites != "") { // si hay limites
+            $limites = "LIMIT $limites";
+        }
+
+
+        //Preparar la consulta
+        $consulta = "SELECT $campos
+                    FROM " . $this->nombreTabla . "
+                    $condiciones
+                    $camposGroupBy
+                    $whereHaving
+                    $ordenamiento
+                    $limites
+                    ";
+
+        //        echo $consulta;
+
+        // Ejecutar la consulta
+        $respuesta = $this->conexion->query($consulta);
+
+        $datos = []; //array vacio
+        // while($fila = mysqli_fetch_array($respuesta))
+
+        while ($fila = $respuesta->fetch_assoc()) { // mientras haya filass indice literal
+            $datos[] = $fila; // añadimos la fila al array
+        }
+
+        return $datos;
     }
 }
