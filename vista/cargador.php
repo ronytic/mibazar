@@ -8,6 +8,7 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -65,6 +66,29 @@
                                 <li><a href="./?c=producto&m=listar">Listar Productos</a></li>
                             </ul>
                         </li>
+                        <li class="submenu">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> Compra
+                                <span class="caret pull-right"></span>
+                            </a>
+                            <!-- Sub menu -->
+                            <ul>
+                                <li><a href="./?c=compra&m=nuevo">Nueva Compra</a></li>
+                                <li><a href="./?c=compra&m=listar">Listar Compras</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="submenu">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> Ventas
+                                <span class="caret pull-right"></span>
+                            </a>
+                            <!-- Sub menu -->
+                            <ul>
+                                <li><a href="./?c=venta&m=nuevo">Nueva Venta</a></li>
+                                <li><a href="./?c=venta&m=listar">Listar Ventas</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -105,6 +129,16 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
+
+    <?php
+    if (isset($js)) {
+        foreach ($js as $j) {
+            echo '<script src="' . $j . '"></script>';
+        }
+    }
+    ?>
+
+
 </body>
 
 </html>
