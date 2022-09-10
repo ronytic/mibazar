@@ -55,13 +55,37 @@ class BD
         $respuesta = $this->conexion->query($consulta);
         return $respuesta;
     }
-    function actualizar()
+    function actualizar($arrayValores, $condiciones)
     {
-        // 1.- Conectar a la BD
+        /*
+        UPDATE tabla
+        SET campo1 = valor1, campo2 = valor2, campo3 = valor3
+        WHERE campo = valor
+        */
+        foreach ($arrayValores as $campo => $valor) {
+            $campos[] = "$campo = '$valor'";
+        }
+
+        $campos = \implode(',', $campos);
+        // preparar la consulta
+        $consulta = "UPDATE " . $this->nombreTabla . "
+                        SET $campos
+                        WHERE $condiciones";
+        // echo $consulta;
+        // Ejecutar la consulta
+        $respuesta = $this->conexion->query($consulta);
+        return $respuesta;
     }
-    function eliminar()
+    function eliminar($condicion)
     {
-        // 1.- Conectar a la BD
+        //preparar la consulta
+        $consulta = "UPDATE " . $this->nombreTabla . "
+                        SET estado = 0
+                        WHERE $condicion";
+        // echo $consulta;
+        //ejecutar la consulta
+        $respuesta = $this->conexion->query($consulta);
+        return $respuesta;
     }
     function seleccionar($campos = '*', $condiciones = '', $camposGroupBy = '', $whereHaving = '', $ordenamiento = '', $limites = '')
     {
