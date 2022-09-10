@@ -25,6 +25,11 @@
 
             </td>
             <td><?= $producto['descripcion'] ?></td>
+            <td>
+                <a class="btn btn-warning" href="./?c=producto&m=modificar&id=<?= $producto['id_producto'] ?>">M</a>
+
+                <a class="btn btn-danger" href="./?c=producto&m=eliminar&id=<?= $producto['id_producto'] ?>">E</a>
+            </td>
         </tr>
     <?php
     }
