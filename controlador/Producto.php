@@ -8,7 +8,9 @@ class Producto
     function nuevo()
     {
         //Llamar a una vista para que el usuario ingrese los datos del producto
-        require_once 'vista/producto/nuevo.php';
+        $titulo = "Registro de nuevo Producto";
+        $vista = 'vista/producto/nuevo.php';
+        require_once 'vista/cargador.php';
     }
 
     function guardar()
@@ -48,10 +50,10 @@ class Producto
                 $archivoDestino = 'imagenes/' . $foto['name'];
                 copy($foto['tmp_name'], $archivoDestino); // Copia del archivo temporal a la carpeta imagenes
             } else {
-                echo "El archivo es muy pesado";
+                $mensaje = "El archivo es muy pesado";
             }
         } else {
-            echo "No es un archivo imagen";
+            $mensaje = "No es un archivo imagen";
         }
 
 
@@ -70,11 +72,32 @@ class Producto
         $respuesta = $producto->insertar($valores);
 
         if ($respuesta) {
-            echo "Producto guardado";
+            $mensaje = "Producto guardado";
         } else {
-            echo "Error al guardar el producto";
+            $mensaje = "Error al guardar el producto";
         }
+
+
+
+
+        //LLAMAR a la vista
+        $titulo = "Registro de nuevo Producto";
+        $vista = 'vista/producto/mensaje.php';
+        require_once "vista/cargador.php";
     }
+
+    function listar()
+    {
+        // SELECT -> OBtener los registros de la Tabla
+        $producto = new \modelo\Producto();
+        $productos = $producto->seleccionar("*", "estado = 1", "", "", "nombre asc");
+
+        // Llamar a la vista y mostrar en formato de tabla
+        $titulo  = "Listado de Productos";
+        $vista = 'vista/producto/listar.php';
+        require_once "vista/cargador.php";
+    }
+
 
     function editar()
     {

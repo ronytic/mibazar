@@ -1,4 +1,3 @@
-<h3>Nuevo Producto</h3>
 <form action="./?c=producto&m=guardar" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="nombre">Nombre</label>
