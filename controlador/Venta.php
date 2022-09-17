@@ -109,4 +109,17 @@ class Venta
         $vista = "vista/venta/mensaje.php";
         require_once "vista/cargador.php";
     }
+
+    function listar()
+    {
+
+        // Llamar al modelo venta
+        $venta = new \modelo\Venta();
+        $ventas = $venta->seleccionar("*", "estado=1"); //$ventas esto es array de array
+
+
+        $titulo = "Listado de Ventas";
+        $vista = "vista/venta/listar.php";
+        require_once "vista/cargador.php";
+    }
 }
