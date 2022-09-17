@@ -87,6 +87,11 @@ class BD
         $respuesta = $this->conexion->query($consulta);
         return $respuesta;
     }
+
+    function ultimo()
+    {
+        return $this->conexion->insert_id;
+    }
     function seleccionar($campos = '*', $condiciones = '', $camposGroupBy = '', $whereHaving = '', $ordenamiento = '', $limites = '')
     {
 
