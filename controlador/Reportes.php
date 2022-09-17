@@ -24,14 +24,10 @@ class Reportes
     {
 
         // GENERAR UN CODIGO QR y GUARDARLO DENTRO DE UNA CARPETA
-
-
-
-
-        exit();
-
-
-
+        require_once "qrlib.php";
+        $codeContents = base64_encode("Mi sistemaweb" . date("Y-m-d H:i:s"));
+        $pngAbsoluteFilePath = "imagenes/qr.png";
+        \QRcode::png($codeContents, $pngAbsoluteFilePath);
 
 
         //Obtener las ventas
@@ -89,6 +85,7 @@ class PDF extends \librerias\fpdf\FPDF
 
         //Insertar una imagen como logo
         $this->Image("imagenes/milogo.jpg", 1, 1, 2, 2);
+        $this->Image("imagenes/qr.png", 25, 1, 2, 2);
     }
 
     function Footer()
