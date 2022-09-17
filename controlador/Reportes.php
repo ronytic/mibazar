@@ -20,6 +20,13 @@ class Reportes
         $pdf->Output(); // Mostramos el pdf generado
     }
 
+    public function contenedorventas()
+    {
+        $titulo = "Reporte de Ventas";
+        $vista = "vista/reportes/ventas.php";
+        require_once "vista/cargador.php";
+    }
+
     public function ventas()
     {
 

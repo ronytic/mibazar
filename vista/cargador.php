@@ -89,6 +89,18 @@
                                 <li><a href="./?c=venta&m=listar">Listar Ventas</a></li>
                             </ul>
                         </li>
+
+                        <li class="submenu">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> Reporte
+                                <span class="caret pull-right"></span>
+                            </a>
+                            <!-- Sub menu -->
+                            <ul>
+                                <li><a href="./?c=reportes&m=contenedorventas">Reporte de Ventas</a></li>
+                                <li><a href="./?c=venta&m=listar">Listar Ventas</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

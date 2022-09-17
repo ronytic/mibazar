@@ -1,0 +1,1 @@
+<iframe src="./?c=reportes&m=ventas" frameborder="0" width="100%" height="400"></iframe>
