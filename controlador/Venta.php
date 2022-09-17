@@ -53,19 +53,60 @@ class Venta
 
     function guardar()
     {
-        $nit = $_POST['nit'];
 
-        $datosGuardar = [
-            'nit' => $nit,
+        // echo "<pre>";
+        // print_r($_POST);
+        // echo "</pre>";
+        // exit();
+        $producto = $_POST['producto']; // Array de array (Matriz) productos
+
+        $nombrecliente = $_POST['nombrecliente'];
+        $nitcliente = $_POST['nitcliente'];
+        $totalgeneral = $_POST['totalgeneral'];
+        $cancelado = $_POST['cancelado'];
+        $cambio = $_POST['cambio'];
+
+        $datosGuardarVenta = [
+            'nombrecliente' => $nombrecliente,
+            'nitcliente' => $nitcliente,
+            'totalgeneral' => $totalgeneral,
+            'cancelado' => $cancelado,
+            'cambio' => $cambio,
         ];
-
-        // 1.- Llamar al modelo
+        // Llamar al modelo venta
         $venta = new \modelo\Venta();
-        $respuesta = $venta->insertar($datosGuardar);
-        if ($respuesta) {
-            echo "Se guardo correctamente";
-        } else {
-            echo "No se guardo";
+        $respuesta = $venta->insertar($datosGuardarVenta); // Insertar la venta
+        $id_venta = $venta->ultimo(); // Obtener el id de la venta
+
+
+        // Llamar al modelo ventadetalle
+        $ventadetalle = new \modelo\VentaDetalle();
+
+        foreach ($producto as $fila) {
+            //Preparando los datos a guardar en venta_detalle
+            $datosVentaDetalle = [
+                'id_venta' => $id_venta,
+                'id_producto' => $fila['id_producto'],
+                'cantidad' => $fila['cantidad'],
+                'precio' => $fila['precio'],
+                'total' => $fila['total'],
+            ];
+            $ventadetalle->insertar($datosVentaDetalle); // Insertar el detalle de la venta
         }
+
+
+
+
+        if ($respuesta) {
+            $mensaje =  "Se guardo correctamente";
+        } else {
+            $mensaje = "No se guardo";
+        }
+
+
+        //llamar a la vista
+        $titulo = "Nueva Venta";
+        $vista = "vista/venta/mensaje.php";
+        require_once "vista/cargador.php";
     }
 }
