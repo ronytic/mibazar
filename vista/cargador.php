@@ -54,7 +54,7 @@
                 <div class="sidebar content-box" style="display: block;">
                     <ul class="nav">
                         <!-- Main menu -->
-                        <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                        <li class="current"><a href="./?c=principal&m=inicio"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
                         <li class="submenu">
                             <a href="#">
                                 <i class="glyphicon glyphicon-list"></i> Producto
@@ -98,7 +98,7 @@
                             <!-- Sub menu -->
                             <ul>
                                 <li><a href="./?c=reportes&m=contenedorventas">Reporte de Ventas</a></li>
-                                <li><a href="./?c=venta&m=listar">Listar Ventas</a></li>
+                                <li><a href="./?c=reportegrafica&m=ventas">Gráfica Estadística de Ventas</a></li>
                             </ul>
                         </li>
                     </ul>
